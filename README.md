@@ -19,7 +19,7 @@ English
 
 ## Usage: Running on Google Colaboratory (Recommended) 
 使い方: Google Colaboratoryで実行する場合（推奨）
-TPUまたはGPUの強力なリソースを活用するため、Google Colabにフォルダごとアップロードして実行することをお勧めします。
+Google Colabにフォルダごとアップロードして実行することをお勧めします。
 
 1. ご自身のGoogle Driveに `Spectral Lifter` フォルダ全体をアップロードします。今回はマイドライブの直下に「Spectral Lifter」というフォルダを作成し、その中にアップロードしました。
 2. Google Colabのノートブックを新規作成し、MyDriveをマウントします。
