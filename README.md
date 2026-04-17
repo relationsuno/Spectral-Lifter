@@ -52,7 +52,16 @@ Once started, open the link `http://127.0.0.1:7860` in your browser.
 If the audio sounds too quiet, try adjusting the LUFS value in `utils/audio_io.py` to -12.0.
 
 - **LUFS**: Configured to -14.0 LUFS in `utils/audio_io.py`. Please adjust as needed.
+
 - **True Peak**: Configured to -1.0 dBTP in `utils/audio_io.py`. Please adjust as needed.
+
+
+### Audio Processing (Features)
+1. **Target Analysis**: Detection of 12k-16kHz rolloff, analysis of shimmer components and harmonics
+2. **Digital Denoising**: Removal of hiss and graininess using Spectral Gate (subtraction)
+3. **Spectral Upscaling**: Reconstruction of frequencies above 16kHz using heuristics/neural foldover, transient acquisition
+4. **Dynamics Control**: Multi-band suppression of sibilance (5k-8kHz), shimmer (10k-14kHz), and artifacts above 18kHz
+5. **Final Mastering**: Loudness normalization to -14 LUFS, True Peak limiting control
 
 
 ### Disclaimer
@@ -123,8 +132,9 @@ python app.py
 
 音量が小さいと感じる方は、テキストエディタを使って、utils/audio_io.py のLUFSを -12.0 に変更してみてください。
 
-**LUFS**: utils/audio_io.py に -14.0 LUFS と設定されています。必要に応じて変更してください。
-**True Peak**: utils/audio_io.py に -1.0 dBTP と設定されています。必要に応じて変更してください。
+- **LUFS**: utils/audio_io.py に -14.0 LUFS と設定されています。必要に応じて変更してください。
+
+- **True Peak**: utils/audio_io.py に -1.0 dBTP と設定されています。必要に応じて変更してください。
 
 
 ### ライセンス (License)
@@ -132,7 +142,7 @@ python app.py
 
 
 ### 免責事項 (Disclaimer)
-* **自己責任の原則**: 本ツールは現状有姿で提供され、使用に伴ういかなる損害（データ損失、音質の劣化、システムトラブル等）についても作者は一切の責任を負いません。
-* **出力品質の保証**: 本ツールはAI生成音源の特性に基づき設計されていますが、元の音源の状態やパラメーター設定により、期待される効果が得られない場合があります。
-* **権利関係**: 本ツールは個人による研究・開発プロジェクトであり、Suno AI、Google、その他言及されている各企業・団体とは一切関係ありません。
-* **知的財産権**: 処理後の音源の権利は、ユーザーが元の音源に対して保有している権利に準じます。本ツールの使用自体が権利関係を変更することはありません。
+- **自己責任の原則**: 本ツールは現状有姿で提供され、使用に伴ういかなる損害（データ損失、音質の劣化、システムトラブル等）についても作者は一切の責任を負いません。
+- **出力品質の保証**: 本ツールはAI生成音源の特性に基づき設計されていますが、元の音源の状態やパラメーター設定により、期待される効果が得られない場合があります。
+- **権利関係**: 本ツールは個人による研究・開発プロジェクトであり、Suno AI、Google、その他言及されている各企業・団体とは一切関係ありません。
+- **知的財産権**: 処理後の音源の権利は、ユーザーが元の音源に対して保有している権利に準じます。本ツールの使用自体が権利関係を変更することはありません。
