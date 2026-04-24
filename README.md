@@ -55,6 +55,9 @@ If the audio sounds too quiet, try adjusting the LUFS value in `utils/audio_io.p
 
 - **True Peak**: Configured to -1.0 dBTP in `utils/audio_io.py`. Please adjust as needed.
 
+- **Bit Depth**: Configured to 32-bit float in `utils/audio_io.py` (subtype='FLOAT'). To use 24-bit or 16-bit, change the subtype to 'PCM_24' or 'PCM_16', respectively.
+
+
 
 ### Audio Processing (Features)
 1. **Target Analysis**: Detection of 12k-16kHz rolloff, analysis of shimmer components and harmonics
@@ -135,6 +138,8 @@ python app.py
 - **LUFS**: utils/audio_io.py に -14.0 LUFS と設定されています。必要に応じて変更してください。
 
 - **True Peak**: utils/audio_io.py に -1.0 dBTP と設定されています。必要に応じて変更してください。
+
+- **ビット数**: utils/audio_io.py にて 32 bit に設定してます。subtype='FLOAT' に設定しています。24ビットや16ビットへ変更したい方は、'PCM_24' や subtype='PCM_16'にしてください。
 
 
 ### ライセンス (License)
