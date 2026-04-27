@@ -1,4 +1,4 @@
-# Spectral Lifter (v1.1)
+# Spectral Lifter (v1.2)
 
 [日本語](#日本語) | [English](#english)
 
@@ -6,21 +6,21 @@
 
 ## 日本語
 
-Spectral Lifter は、Suno AIなどの生成AIによって作られた音源特有の「高域（12kHz〜16kHz以上）の欠落」を復元し、「人工的なシマーノイズ（シュワシュワ音）」を除去するためのニューラル・オーディオ・プロセッサーです。
+Spectral Lifter は、Suno AIなどの生成AIによって作られた音源特有の「高域（12kHz〜16kHz以上）の欠落」を復元し、「人工的なシマーノイズ（シュワシュワ音）」を除去するためのオーディオ・プロセッサーです。
 
 **⚠️ Note**: 自己責任でご利用ください。公式のサポート等はありません。
+
+**⚠️ Note**: ニューラルアップスケーリングはうまくいってなかったので、処理を削除しました。ご了承ください。
 
 ### ✨ 特徴 (Features)
 1. **Target Analysis**: 12k-16kHzの急激なロールオフ（カット）と、シマー成分・倍音を自動解析。
 2. **Digital Denoising**: Spectral Gate（減算）により、ヒスノイズや砂嵐のような粒子感を除去。
-3. **Spectral Upscaling (Neural)**: ニューラルモデルとヒューリスティック手法を組み合わせ、失われた16kHz以上の高帯域を再構築。ドラム等のアタック感（トランジェント）も復元します。
-4. **Dynamics Control**: 刺さる高音（5k-8kHz）、シマーノイズ（10k-14kHz）、不要なアーティファクト（18kHz以上）をマルチバンドで抑制。
-5. **Final Mastering**: ストリーミング標準のラウドネス（-14 LUFS）およびTrue Peak（-1.0 dBTP）へ自動調整。
+3. **Dynamics Control**: 刺さる高音（5k-8kHz）、シマーノイズ（10k-14kHz）、不要なアーティファクト（18kHz以上）をマルチバンドで抑制。
+4. **Final Mastering**: ストリーミング標準のラウドネス（-14 LUFS）およびTrue Peak（-1.0 dBTP）へ自動調整。
 
 ### 🚀 使い方
 
 #### パターンA: Google Colaboratoryで実行する場合（推奨）
-GPU/TPUなどの強力なリソースを活用できるため、こちらを推奨します。
 1. Google Driveの直下（MyDrive）に `Spectral Lifter` フォルダごとアップロードします。
 2. Google Colabで新規ノートブックを作成し、以下のコードを順番に実行します。
    ```python
@@ -62,16 +62,15 @@ python app.py
 
 ## English
 
-Spectral Lifter is a neural audio processor designed to restore missing high-frequency content (above 12kHz–16kHz) and remove artificial "shimmer" artifacts (swishy/grainy noise) typically found in AI-generated audio.
+Spectral Lifter is a audio processor designed to restore missing high-frequency content (above 12kHz–16kHz) and remove artificial "shimmer" artifacts (swishy/grainy noise) typically found in AI-generated audio.
 
 **⚠️ Note**: Please use this tool at your own risk. No official support is provided.
 
 ### ✨ Features
 1. **Target Analysis**: Detects 12k-16kHz rolloff and analyzes shimmer components and harmonics.
 2. **Digital Denoising**: Removes hiss and graininess using Spectral Gate (subtraction).
-3. **Spectral Upscaling (Neural)**: Reconstructs frequencies above 16kHz using a hybrid of neural models and heuristics, while reshaping transients.
-4. **Dynamics Control**: Multi-band suppression of sibilance (5k-8kHz), shimmer (10k-14kHz), and artifacts above 18kHz.
-5. **Final Mastering**: Automatic loudness normalization to -14 LUFS and True Peak limiting.
+3. **Dynamics Control**: Multi-band suppression of sibilance (5k-8kHz), shimmer (10k-14kHz), and artifacts above 18kHz.
+4. **Final Mastering**: Automatic loudness normalization to -14 LUFS and True Peak limiting.
 
 ### 🚀 Usage
 

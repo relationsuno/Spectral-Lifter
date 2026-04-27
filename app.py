@@ -11,7 +11,7 @@ def process_audio(input_file):
     return output_file, "Processing complete!"
 
 with gr.Blocks(title='Antigravity - Spectral Lifter') as demo:
-    gr.Markdown("# Antigravity - Spectral Lifter (v1.1)")
+    gr.Markdown("# Antigravity - Spectral Lifter (v1.2)")
     gr.Markdown("Resolve high-frequency cutoff and AI shimmer in Suno AI generated audio.")
     
     with gr.Row():

@@ -45,14 +45,9 @@ class Upscaler:
         S = np.abs(librosa.stft(y_mono))
         S_tensor = torch.tensor(S, dtype=torch.float32).to(self.device)
         
-        # Neural Pass: Predict HF envelope/mask from lower frequencies
+        # Simulated Neural Pass (No-op without real weights)
         with torch.no_grad():
-            # Use lower 512 bins (~0-12kHz) as input features
-            lower_S = S_tensor[:512, :].transpose(0, 1) # (T, 512)
-            # Normalize input to model
-            lower_S = lower_S / (torch.max(lower_S) + 1e-8)
-            # Output is mask for next 256 bins (~12-18kHz)
-            predicted_hf_mask = self.model(lower_S).transpose(0, 1).cpu().numpy() # (256, T)
+            pass
             
         # V1.0 Heuristic approach: Spectral folding/translation
         # Pitch shift by one octave to generate harmonics above original cutoff
@@ -63,18 +58,7 @@ class Upscaler:
         S_exc = librosa.stft(y_exciter)
         freqs = librosa.fft_frequencies(sr=sr)
         hp_mask = (freqs > max(cutoff - 1000, 12000)).astype(float)[:, np.newaxis]
-        
-        # Apply neural mask to the heuristic high frequencies
-        neural_mask = np.ones_like(S_exc, dtype=float)
-        start_bin = 512
-        end_bin = min(start_bin + 256, neural_mask.shape[0])
-        mask_len = end_bin - start_bin
-        
-        # Match time frames just in case of off-by-one errors
-        min_t = min(neural_mask.shape[1], predicted_hf_mask.shape[1])
-        neural_mask[start_bin:end_bin, :min_t] = predicted_hf_mask[:mask_len, :min_t]
-        
-        S_exc_hp = S_exc * hp_mask * neural_mask
+        S_exc_hp = S_exc * hp_mask
         y_hf = librosa.istft(S_exc_hp)
         
         # Mix HF back into original signal
